@@ -114,7 +114,7 @@ console.log(updatedUser);
 //10-misol
 //Quyidagi kodni hoisting qoidasiga asoslanib tahlil qiling va qaysi qatorda xatolik yuz berishini tushuntiring.
 
-console.log(a); // ?
+console.log(a); // undi
 var a = 10;
 
 // console.log(b); // ?
@@ -268,6 +268,17 @@ const products2 = [
   { id: 4, name: "Kitob", price: 50, category: "books" },
 ];
 
+function num23(products) {
+  if (!Array.isArray(products) || products.length === 0) {
+    return 0;
+  }
+
+  return products.reduce((total, product) => total + product.price, 0);
+}
+
+const sum23 = num23(products2);
+console.log(sum23);
+
 //24-misol
 // Funksiya mahsulotlarning narxini 10% ga kamaytirib, yangi massivni qaytarishi kerak.
 
@@ -278,8 +289,35 @@ const products3 = [
   { id: 4, name: "Kitob", price: 50, category: "books" },
 ];
 
+function num24(products, discountPercentage) {
+  if (!Array.isArray(products) || products.length === 0) {
+    return [];
+  }
+
+  return products.map((product) => ({
+    ...product,
+    price: (product.price * (1 - discountPercentage / 100)).toFixed(2), // Narxni kamaytiramiz
+  }));
+}
+
+const sum24 = num24(products3, 10);
+console.log(sum24);
+
 //25-misol
 //Funksiya ma'lum bir minimal narxni qabul qilib, shu narxdan yuqori bo‘lgan mahsulotlarni qaytarishi kerak
+
+const products4 = [
+  { id: 1, name: "Telefon", price: 1200, category: "electronics" },
+  { id: 2, name: "Noutbuk", price: 2000, category: "electronics" },
+  { id: 3, name: "Stol", price: 150, category: "furniture" },
+  { id: 4, name: "Kitob", price: 50, category: "books" },
+];
+
+function num25(products, minPrice) {
+  return products.filter((product) => product.price > minPrice);
+}
+
+const sum25 = num25(products4, 1000);
 
 // DOMLA TOGRISI UNCHA TUSHINMADIM
 // VIDEONI RODUMKU LEKIN ISHLOLMAYAPMAN
